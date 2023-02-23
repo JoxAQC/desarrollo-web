@@ -3,7 +3,7 @@ const desktopMenu = document.querySelector(".desktop-menu")
 const burguerMenu = document.querySelector(".menu")
 const mobilMenu = document.querySelector(".mobile-menu")
 const cartIcon = document.querySelector(".navbar-shopping-cart")
-const shoppingCart = document.querySelector(".product-detail")
+const shoppingCart = document.querySelector("#shoppingCartContainer")
 const cardsContainer = document.querySelector('.cards-container');
 
 navEmail.addEventListener("click", toggleDesktopMenu)
