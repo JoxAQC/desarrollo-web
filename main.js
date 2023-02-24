@@ -14,6 +14,7 @@ const addToCartButton = document.querySelector(".addToCartFromDetail")
 const productDetailImage = document.querySelector("#productDetailImage")
 const productDetailPrice = document.querySelector("#productDetailPrice")
 const productDetailName = document.querySelector("#productDetailName")
+const cartContent = document.querySelector("#cartContent")
 
 navEmail.addEventListener("click", toggleDesktopMenu)
 burguerMenu.addEventListener("click", toggleMobileMenu)
@@ -81,7 +82,7 @@ function addToCart(image, name, price){
         myOrderContent.removeChild(productInfo)
         resta = parseFloat(price)*-1
         calculatePrice(resta)
-        precioTotal.innerText = "$" + totalPrice
+        calculateCount(-1)
     }
 
     productFigure.appendChild(productImage)
@@ -89,14 +90,24 @@ function addToCart(image, name, price){
     myOrderContent.appendChild(productInfo)
 
     calculatePrice(price)
-
-    precioTotal.innerText = "$" + totalPrice
+    calculateCount(1)
 }
 
 var totalPrice = 0
+var itemsQuantity = 0
 
 function calculatePrice(productPrice){
     totalPrice = totalPrice + parseFloat(productPrice)
+    precioTotal.innerText = "$" + totalPrice
+}
+
+function calculateCount(cantidad){
+    itemsQuantity = itemsQuantity + parseInt(cantidad)
+    if (itemsQuantity==0){
+        cartContent.innerText = "+" 
+    }else{
+        cartContent.innerText = itemsQuantity
+    }
 }
 
 class Product{
