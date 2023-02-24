@@ -10,6 +10,10 @@ const closeDetail = document.querySelector('.product-detail-close');
 const myOrderContent = document.querySelector('.products-container');
 const precioTotal = document.querySelector("#precioTotal")
 const closeShoppingCart = document.querySelector(".title-container")
+const addToCartButton = document.querySelector(".addToCartFromDetail")
+const productDetailImage = document.querySelector("#productDetailImage")
+const productDetailPrice = document.querySelector("#productDetailPrice")
+const productDetailName = document.querySelector("#productDetailName")
 
 navEmail.addEventListener("click", toggleDesktopMenu)
 burguerMenu.addEventListener("click", toggleMobileMenu)
@@ -34,12 +38,6 @@ function toggleShoppingCart(){
 }
 //(product.image,product.value,product.name)
 function showProductDetail(source, price, name){
-    let productDetailImage = document.querySelector("#productDetailImage")
-    let productDetailPrice = document.querySelector("#productDetailPrice")
-    let productDetailName = document.querySelector("#productDetailName")
-    console.log(name)
-    console.log(price)
-    console.log(source)
     productDetailImage.setAttribute('src', source)
     productDetailPrice.innerText = '$ ' + price
     productDetailName.innerText = name
@@ -76,6 +74,15 @@ function addToCart(image, name, price){
 
     const productCloseImage = document.createElement('img')
     productCloseImage.setAttribute('src', './icons/icon_close.png');
+    productCloseImage.classList.add("removeProduct")
+    productCloseImage.addEventListener("click", removeProduct)
+
+    function removeProduct() {
+        myOrderContent.removeChild(productInfo)
+        resta = parseFloat(price)*-1
+        calculatePrice(resta)
+        precioTotal.innerText = "$" + totalPrice
+    }
 
     productFigure.appendChild(productImage)
     productInfo.append(productFigure,productName,productPrice,productCloseImage)

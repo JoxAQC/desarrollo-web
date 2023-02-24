@@ -165,8 +165,17 @@ nav {
     color: var(--hospital-green);
 }
 /* Shopping cart */
+.removeProduct {
+    width: 20px;
+}
+.removeProduct:hover {
+    cursor: pointer;
+    background-color: var(--dark);
+    border-radius: 50%;
+}
 #shoppingCartContainer {
     padding: 8px 24px;
+    border-bottom-left-radius: 12px;
 }
 .title-container {
     display: flex;
