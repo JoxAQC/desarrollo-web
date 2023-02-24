@@ -7,11 +7,15 @@ const shoppingCart = document.querySelector("#shoppingCartContainer")
 const productDetail = document.querySelector("#productDetail")
 const cardsContainer = document.querySelector('.cards-container');
 const closeDetail = document.querySelector('.product-detail-close');
+const myOrderContent = document.querySelector('.products-container');
+const precioTotal = document.querySelector("#precioTotal")
+const closeShoppingCart = document.querySelector(".title-container")
 
 navEmail.addEventListener("click", toggleDesktopMenu)
 burguerMenu.addEventListener("click", toggleMobileMenu)
 cartIcon.addEventListener("click", toggleShoppingCart)
 closeDetail.addEventListener("click", closeProductDetail)
+closeShoppingCart.addEventListener("click", toggleShoppingCart)
 
 function toggleDesktopMenu(){
     desktopMenu.classList.toggle("inactive")
@@ -46,6 +50,46 @@ function showProductDetail(source, price, name){
 
 function closeProductDetail(){
     productDetail.classList.add("inactive")
+}
+
+/* <div class="shopping-cart">
+    <figure>
+        <img src="https://images.pexels.com/photos/1720957/pexels-photo-1720957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="bike">
+    </figure>
+    <p>Toy</p>
+    <p>$30,00</p>
+    <img src="./icons/icon_close.png" alt="close">
+</div> */
+
+function addToCart(image, name, price){
+    const productInfo = document.createElement('div')
+    productInfo.classList.add("shopping-cart")
+
+    const productFigure = document.createElement('figure')
+    const productImage = document.createElement('img')
+    productImage.setAttribute('src', image)
+
+    const productName = document.createElement('p')
+    productName.innerText = name
+    const productPrice = document.createElement('p')
+    productPrice.innerText = '$ ' + price
+
+    const productCloseImage = document.createElement('img')
+    productCloseImage.setAttribute('src', './icons/icon_close.png');
+
+    productFigure.appendChild(productImage)
+    productInfo.append(productFigure,productName,productPrice,productCloseImage)
+    myOrderContent.appendChild(productInfo)
+
+    calculatePrice(price)
+
+    precioTotal.innerText = "$" + totalPrice
+}
+
+var totalPrice = 0
+
+function calculatePrice(productPrice){
+    totalPrice = totalPrice + parseFloat(productPrice)
 }
 
 class Product{
@@ -101,6 +145,9 @@ function renderProducts(array){
         productInfoDiv.appendChild(productName);
       
         const productInfoFigure = document.createElement('figure');
+        productInfoFigure.classList.add('addToCart');
+        productInfoFigure.addEventListener("click", addToCart.bind(this, product.image,product.name, product.value))
+
         const productImgCart = document.createElement('img');
         productImgCart.setAttribute('src', './icons/bt_add_to_cart.svg');
       

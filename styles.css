@@ -171,6 +171,9 @@ nav {
 .title-container {
     display: flex;
 }
+.title-container:hover {
+    cursor: pointer;
+}
 .title-container img {
     transform: rotate(180deg);
     margin-right: 14px;
@@ -331,6 +334,9 @@ text-align: center;
     grid-template-columns: repeat(auto-fill, 240px);
     gap: 26px;
     place-content: center;
+}
+.addToCart:hover {
+    cursor: pointer;
 }
 .product-card {
     width: 240px;
