@@ -4,24 +4,39 @@ const burguerMenu = document.querySelector(".menu")
 const mobilMenu = document.querySelector(".mobile-menu")
 const cartIcon = document.querySelector(".navbar-shopping-cart")
 const shoppingCart = document.querySelector("#shoppingCartContainer")
+const productDetail = document.querySelector("#productDetail")
 const cardsContainer = document.querySelector('.cards-container');
+const closeDetail = document.querySelector('.product-detail-close');
 
 navEmail.addEventListener("click", toggleDesktopMenu)
 burguerMenu.addEventListener("click", toggleMobileMenu)
 cartIcon.addEventListener("click", toggleShoppingCart)
+closeDetail.addEventListener("click", closeProductDetail)
 
 function toggleDesktopMenu(){
     desktopMenu.classList.toggle("inactive")
 }
 
 function toggleMobileMenu(){
+    productDetail.classList.add("inactive")
     shoppingCart.classList.add("inactive")
     mobilMenu.classList.toggle("inactive")
 }
 
 function toggleShoppingCart(){
     mobilMenu.classList.add("inactive")
+    productDetail.classList.add("inactive")
     shoppingCart.classList.toggle("inactive")
+}
+
+function showProductDetail(){
+    mobilMenu.classList.add("inactive")
+    shoppingCart.classList.add("inactive")
+    productDetail.classList.remove("inactive")
+}
+
+function closeProductDetail(){
+    productDetail.classList.add("inactive")
 }
 
 class Product{
@@ -61,6 +76,7 @@ function renderProducts(array){
         // product= {name, price, image} -> product.image
         const productImg = document.createElement('img');
         productImg.setAttribute('src', product.image);
+        productImg.addEventListener("click", showProductDetail)
       
         const productInfo = document.createElement('div');
         productInfo.classList.add('product-info');
