@@ -28,8 +28,17 @@ function toggleShoppingCart(){
     productDetail.classList.add("inactive")
     shoppingCart.classList.toggle("inactive")
 }
-
-function showProductDetail(){
+//(product.image,product.value,product.name)
+function showProductDetail(source, price, name){
+    let productDetailImage = document.querySelector("#productDetailImage")
+    let productDetailPrice = document.querySelector("#productDetailPrice")
+    let productDetailName = document.querySelector("#productDetailName")
+    console.log(name)
+    console.log(price)
+    console.log(source)
+    productDetailImage.setAttribute('src', source)
+    productDetailPrice.innerText = '$ ' + price
+    productDetailName.innerText = name
     mobilMenu.classList.add("inactive")
     shoppingCart.classList.add("inactive")
     productDetail.classList.remove("inactive")
@@ -76,8 +85,8 @@ function renderProducts(array){
         // product= {name, price, image} -> product.image
         const productImg = document.createElement('img');
         productImg.setAttribute('src', product.image);
-        productImg.addEventListener("click", showProductDetail)
-      
+        productImg.addEventListener("click", showProductDetail.bind(this, product.image,product.value,product.name))
+       
         const productInfo = document.createElement('div');
         productInfo.classList.add('product-info');
       
