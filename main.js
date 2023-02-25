@@ -21,6 +21,11 @@ burguerMenu.addEventListener("click", toggleMobileMenu)
 cartIcon.addEventListener("click", toggleShoppingCart)
 closeDetail.addEventListener("click", closeProductDetail)
 closeShoppingCart.addEventListener("click", toggleShoppingCart)
+addToCartButton.addEventListener("click", botonClick)
+
+function botonClick(){
+    addToCart(carrito[0].image, carrito[0].name, carrito[0].value)
+}
 
 function toggleDesktopMenu(){
     desktopMenu.classList.toggle("inactive")
@@ -37,6 +42,8 @@ function toggleShoppingCart(){
     productDetail.classList.add("inactive")
     shoppingCart.classList.toggle("inactive")
 }
+
+var carrito = []
 //(product.image,product.value,product.name)
 function showProductDetail(source, price, name){
     productDetailImage.setAttribute('src', source)
@@ -45,9 +52,16 @@ function showProductDetail(source, price, name){
     mobilMenu.classList.add("inactive")
     shoppingCart.classList.add("inactive")
     productDetail.classList.remove("inactive")
+    carrito = []
+    carrito.push(new Product(name, price, source))
+}
+
+function añadir(){
+    console.log("hola")
 }
 
 function closeProductDetail(){
+    carrito = []
     productDetail.classList.add("inactive")
 }
 
@@ -98,7 +112,7 @@ var itemsQuantity = 0
 
 function calculatePrice(productPrice){
     totalPrice = totalPrice + parseFloat(productPrice)
-    precioTotal.innerText = "$" + totalPrice
+    precioTotal.innerText = "$ " + totalPrice
 }
 
 function calculateCount(cantidad){
