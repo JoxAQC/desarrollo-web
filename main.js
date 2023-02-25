@@ -15,6 +15,7 @@ const productDetailImage = document.querySelector("#productDetailImage")
 const productDetailPrice = document.querySelector("#productDetailPrice")
 const productDetailName = document.querySelector("#productDetailName")
 const cartContent = document.querySelector("#cartContent")
+const dark = document.querySelector(".darkBackground")
 
 navEmail.addEventListener("click", toggleDesktopMenu)
 burguerMenu.addEventListener("click", toggleMobileMenu)
@@ -27,8 +28,13 @@ function botonClick(){
     addToCart(carrito[0].image, carrito[0].name, carrito[0].value)
 }
 
-function toggleDesktopMenu(){
+function toggleDesktopMenu(){ 
+    if(shoppingCart.classList.contains("inactive") && productDetail.classList.contains("inactive")){
+        dark.classList.toggle("inactive") 
+    }
     desktopMenu.classList.toggle("inactive")
+    shoppingCart.classList.add("inactive")
+    productDetail.classList.add("inactive")
 }
 
 function toggleMobileMenu(){
@@ -38,6 +44,10 @@ function toggleMobileMenu(){
 }
 
 function toggleShoppingCart(){
+    if(desktopMenu.classList.contains("inactive") && productDetail.classList.contains("inactive")){
+        dark.classList.toggle("inactive") 
+    }
+    desktopMenu.classList.add("inactive")
     mobilMenu.classList.add("inactive")
     productDetail.classList.add("inactive")
     shoppingCart.classList.toggle("inactive")
@@ -46,6 +56,7 @@ function toggleShoppingCart(){
 var carrito = []
 //(product.image,product.value,product.name)
 function showProductDetail(source, price, name){
+    dark.classList.remove("inactive")
     productDetailImage.setAttribute('src', source)
     productDetailPrice.innerText = '$ ' + price
     productDetailName.innerText = name
@@ -56,11 +67,8 @@ function showProductDetail(source, price, name){
     carrito.push(new Product(name, price, source))
 }
 
-function añadir(){
-    console.log("hola")
-}
-
 function closeProductDetail(){
+    dark.classList.add("inactive")
     carrito = []
     productDetail.classList.add("inactive")
 }
@@ -133,12 +141,22 @@ class Product{
 }
 
 const productList = [];
-/*productList.push(new Product("", ,"")*/
+/*productList.push(new Product("", ,""))*/
 productList.push(new Product("Plane", 20,"https://images.pexels.com/photos/1720957/pexels-photo-1720957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"))
 productList.push(new Product("Animals", 30,"https://images.pexels.com/photos/3661223/pexels-photo-3661223.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"))
 productList.push(new Product("Pikachu", 30,"https://images.pexels.com/photos/1716861/pexels-photo-1716861.jpeg?auto=compress&cs=tinysrgb&w=1600"))
 productList.push(new Product("Eskeleton", 30,"https://images.pexels.com/photos/463684/pexels-photo-463684.jpeg?auto=compress&cs=tinysrgb&w=1600"))
 productList.push(new Product("Wall-e", 40,"https://images.pexels.com/photos/2103864/pexels-photo-2103864.jpeg?auto=compress&cs=tinysrgb&w=1600"))
+productList.push(new Product("Spinner", 10,"https://images.pexels.com/photos/1330638/pexels-photo-1330638.jpeg?auto=compress&cs=tinysrgb&w=1600"))
+productList.push(new Product("Car", 30,"https://images.pexels.com/photos/35619/capri-ford-oldtimer-automotive.jpg?auto=compress&cs=tinysrgb&w=1600"))
+productList.push(new Product("Warrior", 40,"https://images.pexels.com/photos/264905/pexels-photo-264905.jpeg?auto=compress&cs=tinysrgb&w=1600"))
+productList.push(new Product("Jack", 40,"https://images.pexels.com/photos/619419/pexels-photo-619419.jpeg?auto=compress&cs=tinysrgb&w=1600"))
+productList.push(new Product("R2D2", 40,"https://images.pexels.com/photos/2085831/pexels-photo-2085831.jpeg?auto=compress&cs=tinysrgb&w=1600"))
+productList.push(new Product("Uhle duckling", 15,"https://images.pexels.com/photos/106144/rubber-duck-bath-duck-toys-costume-106144.jpeg?auto=compress&cs=tinysrgb&w=1600"))
+productList.push(new Product("T-Rex", 30,"https://images.pexels.com/photos/3671194/pexels-photo-3671194.jpeg?auto=compress&cs=tinysrgb&w=1600"))
+productList.push(new Product("Mario Bros", 50,"https://images.pexels.com/photos/163036/mario-luigi-yoschi-figures-163036.jpeg?auto=compress&cs=tinysrgb&w=1600"))
+productList.push(new Product("Teddy Bear", 30,"https://images.pexels.com/photos/207891/pexels-photo-207891.jpeg?auto=compress&cs=tinysrgb&w=1600"))
+
 
 /* <div class="product-card">
     <img src="https://images.pexels.com/photos/1720957/pexels-photo-1720957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">

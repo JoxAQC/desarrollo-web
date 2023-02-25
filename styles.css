@@ -15,6 +15,19 @@ body {
     font-family: 'Quicksand', sans-serif;
 }
 
+/* Dark Background */
+.darkBackground {
+    position: absolute;
+    background-color: var(--black);
+    height: 100%;
+    width: 100%;
+    opacity: 30%;
+    z-index: 1;
+}
+
+/* .main-container {
+} */
+
 /* Navbar */
 .inactive {
     display: none;
@@ -97,6 +110,7 @@ nav {
     border: 1px solid var(--very-light-pink);
     border-radius: 6px;
     padding: 20px 20px 0 20px;
+    z-index: 3;
 }
 .desktop-menu ul {
     list-style: none;
@@ -260,6 +274,9 @@ aside {
     box-sizing: border-box;
     position: absolute;
     right: 0;
+    border-bottom-left-radius: 8px;
+    z-index: 4;
+    padding-bottom: 12px;
 }
 
 /* Product detail */
@@ -293,6 +310,7 @@ aside {
 }
 .product-detail-close:hover {
     cursor: pointer;
+    background: var(--dark)
 }
 #productDetail > img:nth-child(2) {
     width: 100%;
