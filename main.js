@@ -23,6 +23,14 @@ cartIcon.addEventListener("click", toggleShoppingCart)
 closeDetail.addEventListener("click", closeProductDetail)
 closeShoppingCart.addEventListener("click", toggleShoppingCart)
 addToCartButton.addEventListener("click", botonClick)
+dark.addEventListener("click", closeAll)
+
+function closeAll(){
+    dark.classList.add("inactive")
+    desktopMenu.classList.add("inactive")
+    productDetail.classList.add("inactive")
+    shoppingCart.classList.add("inactive")
+}
 
 function botonClick(){
     addToCart(carrito[0].image, carrito[0].name, carrito[0].value)
